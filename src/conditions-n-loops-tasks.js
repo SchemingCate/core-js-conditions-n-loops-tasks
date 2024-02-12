@@ -439,16 +439,17 @@ function rotateMatrix(matrix) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(/* arr */) {
-  throw new Error('Not implemented');
-  // if (arr.length === 0) return [];
-  // let a = '';
-  // let b = '';
-  // let pivot = arr[0];
-
-  // for (let i = 1; i < arr.length; i += 1) {
-  //   if (arr[i] < p) a += `${arr[i]}`;
-  // }
+function sortByAsc(arr) {
+  const outputArr = arr;
+  for (let i = 1; i < arr.length; i += 1) {
+    const current = outputArr[i];
+    let j;
+    for (j = i - 1; j >= 0 && outputArr[j] > current; j -= 1) {
+      outputArr[j + 1] = outputArr[j];
+    }
+    outputArr[j + 1] = current;
+  }
+  return outputArr;
 }
 
 /**
